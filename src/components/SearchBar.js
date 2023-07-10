@@ -1,10 +1,10 @@
-import React, { useState } from "react";
 
-function SearchBar() {
-    const [userInput, setUserInput] = useState('');
+function SearchBar({ userInput, setUserInput }) {
+    
 
     function handleChange(e){
-        setUserInput(e.target.value)
+        setUserInput(e.target.value);
+        e.preventDefault();
     }
 
     return(
@@ -15,7 +15,9 @@ function SearchBar() {
                     value={userInput}
                     type="text"
                     id="search"
+                    placeholder="Search"
                 />
+                <button type="submit">Search</button>
             </form>
         </>
         
