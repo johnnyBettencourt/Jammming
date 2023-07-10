@@ -1,15 +1,22 @@
 
-function SearchBar({ userInput, setUserInput }) {
+function SearchBar({ userInput, setUserInput, setSearchTerm }) {
     
 
     function handleChange(e){
         setUserInput(e.target.value);
         e.preventDefault();
     }
+    function handleSubmit(e){
+        setSearchTerm(userInput);
+        setUserInput('');
+        e.preventDefault();
+    }
 
     return(
         <>
-            <form>
+            <form
+                onSubmit={handleSubmit}
+            >
                 <input
                     onChange={handleChange}
                     value={userInput}
@@ -17,7 +24,11 @@ function SearchBar({ userInput, setUserInput }) {
                     id="search"
                     placeholder="Search"
                 />
-                <button type="submit">Search</button>
+                <button
+                    type="submit"
+                >
+                    Search
+                </button>
             </form>
         </>
         
