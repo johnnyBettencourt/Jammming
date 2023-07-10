@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import './App.css';
-import Header from './components/Header';
-import SearchBar from "./components/SearchBar";
-import SearchResults from './components/SearchResults';
+
+import Playlist from '../Playlist/Playlist';
+import Header from '../Header/Header';
+import SearchBar from '../SearchBar/SearchBar';
+import SearchResults from '../SearchResults/SearchResults';
+import Spotify from '../../utils/Spotify';
 
 function App() {
 
