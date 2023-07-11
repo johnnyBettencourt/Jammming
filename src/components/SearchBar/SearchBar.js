@@ -1,37 +1,27 @@
 import { useCallback, useState } from "react";
 
-function SearchBar({ onSearch }) {
-    const [term, setTerm] = useState('');
+const SearchBar = ({ onSearch }) => {
+    const [term, setTerm] = useState("");
 
-    function handleChange(e){
+    const handleTermChange = useCallback((e) => {
         setTerm(e.target.value);
-        e.preventDefault();
-    }
-    const handleSubmit = useCallback(() => {
-        onSearch(term);
-    }, [onSearch, term])
+    }, []);
 
-    return(
-        <>
-            <form
-                onSubmit={handleSubmit}
-            >
-                <input
-                    onChange={handleChange}
-                    value={term}
-                    type="text"
-                    id="search"
-                    placeholder="Search"
-                />
-                <button
-                    type="submit"
-                >
+    const search = useCallback((e) => {
+        onSearch(term);
+        e.preventDefault();
+    }, [onSearch, term]);
+
+    return (
+        <div>
+            <form onSubmit={search}>
+                <input placeholder="Song" onChange={handleTermChange} />
+                <button type="submit">
                     Search
                 </button>
             </form>
-        </>
-        
+        </div>
     );
-}
+};
 
 export default SearchBar;
