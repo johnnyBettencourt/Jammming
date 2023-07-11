@@ -9,22 +9,22 @@ import Spotify from '../../utils/Spotify';
 
 function App() {
 
-//states for whole app scope
+  // Define state variables for the entire app scope
   const [searchResults, setSearchResults] = useState([]);
   const [playlistName, setPlaylistName] = useState('New Playlist')
   const [playlistTracks, setPlaylistTracks] = useState([])
 
-//gets access token as soon as component mounts
+  // Get access token as soon as the component mounts
   useEffect(() => {
     window.addEventListener('load', () => {Spotify.getAccessToken()});
   }, [])
 
-//sets up search function
+  // Set up the search function
   const search = useCallback((term) => {
     Spotify.search(term).then(setSearchResults);
   }, []);
 
-  //sets up function to add specified track to savedTracks
+  // Add a specified track to the playlistTracks
   const addTrack = useCallback((track) => {
     if (playlistTracks.some((savedTrack) => savedTrack.id === track.id)) {
       return;
@@ -32,11 +32,12 @@ function App() {
     setPlaylistTracks((prevTracks) => [...prevTracks, track]);
   }, [playlistTracks]);
 
-//sets up function to remove specified track from savedTracks
+  // Remove a specified track from the playlistTracks
   const removeTrack = useCallback((track) => {
     setPlaylistTracks((prevTracks) => prevTracks.filter(currentTrack => currentTrack.id !== track.id))
   }, []);
 
+  // Save the playlist by calling the savePlaylist function from Spotify API
   const savePlaylist = useCallback(() => {
     const trackUris = playlistTracks.map((track) => track.uri);
     Spotify.savePlaylist(playlistName, trackUris).then(() => {
@@ -46,31 +47,34 @@ function App() {
   }, [playlistName, playlistTracks]);
 
   return (
-    <div className="App"><div className='app-heading'>
-      <Header />
-      <SearchBar
-        onSearch={search}
-      />
-    </div>
-      
+    <div className="App">
+      <div className='app-heading'>
+        {/* Display the header and search bar */}
+        <Header />
+        <SearchBar
+          onSearch={search}
+        />
+      </div>
+
       <div className='container'>
         <div className='col'>
+          {/* Display the search results */}
           <SearchResults
-          tracks={searchResults}
-          onAdd={addTrack}
-        />
+            tracks={searchResults}
+            onAdd={addTrack}
+          />
         </div>
         <div className='col'>
+          {/* Display the playlist */}
           <Playlist 
-          className='col'
-          playlistName={playlistName}
-          setPlaylistName={setPlaylistName}
-          tracks={playlistTracks}
-          onRemove={removeTrack}
-          onSave={savePlaylist}
-        />
+            className='col'
+            playlistName={playlistName}
+            setPlaylistName={setPlaylistName}
+            tracks={playlistTracks}
+            onRemove={removeTrack}
+            onSave={savePlaylist}
+          />
         </div>
-        
       </div>
     </div>
   );

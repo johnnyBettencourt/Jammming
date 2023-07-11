@@ -3,6 +3,7 @@ import Track from "../Track/Track";
 function TrackList({ tracks, onAdd, onRemove, isRemoval }) {
     return (
         <div className="TrackList">
+            {/* Render each track in the tracks array */}
             {tracks.map((track) => {
                 return(
                     <Track
