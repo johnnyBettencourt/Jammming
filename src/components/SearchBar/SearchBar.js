@@ -1,16 +1,15 @@
+import { useCallback, useState } from "react";
 
-function SearchBar({ userInput, setUserInput, setSearchTerm }) {
-    
+function SearchBar({ onSearch }) {
+    const [term, setTerm] = useState('');
 
     function handleChange(e){
-        setUserInput(e.target.value);
+        setTerm(e.target.value);
         e.preventDefault();
     }
-    function handleSubmit(e){
-        setSearchTerm(userInput);
-        setUserInput('');
-        e.preventDefault();
-    }
+    const handleSubmit = useCallback(() => {
+        onSearch(term);
+    }, [onSearch, term])
 
     return(
         <>
@@ -19,7 +18,7 @@ function SearchBar({ userInput, setUserInput, setSearchTerm }) {
             >
                 <input
                     onChange={handleChange}
-                    value={userInput}
+                    value={term}
                     type="text"
                     id="search"
                     placeholder="Search"

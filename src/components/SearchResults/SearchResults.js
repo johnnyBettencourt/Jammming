@@ -1,12 +1,10 @@
 import Tracklist from "../Tracklist/Tracklist";
 
-function SearchResults({ searchTerm }) {
+function SearchResults({ searchResults }) {
     return (
         <>
-            {searchTerm ? <h2>Results for {searchTerm}:</h2> : <h2>Resluts:</h2>}
-            <div>
-                <Tracklist />
-            </div>
+            <h2>Results:</h2>
+            <Tracklist tracks={searchResults}/>
         </>
     );
 }

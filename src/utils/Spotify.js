@@ -2,7 +2,7 @@ const clientId = '011879a56f3a4ca78c176b20d4b90ae5';
 const redirectUri = 'http://localhost:3000/';
 let accessToken;
 let type = 'track';
-const baseURL = 'https://api.spotify.com/v1/search?type=' + type + 'q=';
+const baseURL = 'https://api.spotify.com/v1/search?type=' + type + '&q=';
 
 const Spotify = {
     getAccessToken() {
@@ -27,25 +27,37 @@ const Spotify = {
 
     search(term) {
         const accessToken = Spotify.getAccessToken();
-        return fetch(baseURL + term, {
-            headers: {
-                Authorization: `Bearer ${accessToken}`
-            }
+        return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`
+          }
         }).then(response => {
-            return response.json();
+          return response.json();
         }).then(jsonResponse => {
-            if (!jsonResponse.tracks) {
-                return []
-            }
-            return jsonResponse.tracks.items.map((track) => ({
-                id: track.id,
-                name: track.name,
-                artist: track.artist[0].name,
-                album: track.album.name,
-                uri: track.uri
-            }));
+          if (!jsonResponse.tracks) {
+            return [];
+          }
+          return jsonResponse.tracks.items.map(track => ({
+            id: track.id,
+            name: track.name,
+            artist: track.artists[0].name,
+            album: track.album.name,
+            uri: track.uri
+          }));
         });
-    },
+      },
+        
+        
+        // const finalResponse = await jsonResponse.tracks.items.map((track) => ({
+        //     id: track.id,
+        //     name: track.name,
+        //     artist: track.artists[0].name,
+        //     album: track.album.name,
+        //     uri: track.uri
+        // }));
+        // console.log(finalResponse);
+        // console.log(typeof finalResponse)
+        // return finalResponse;
 
     savePlaylist(name, trackUris) {
         if (!name || !trackUris.length) {

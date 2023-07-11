@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import './App.css';
 
 import Playlist from '../Playlist/Playlist';
@@ -9,19 +9,25 @@ import Spotify from '../../utils/Spotify';
 
 function App() {
 
-  const [userInput, setUserInput] = useState('');
-  const [searchTerm, setSearchTerm] = useState(null);
+  const [searchResults, setSearchResults] = useState([]);
+  const [playlistName, setPlaylistName] = useState('New Playlist')
+  const [playlistTracks, setPlaylistTracks] = useState([])
+
+  const search = useCallback((term) => {
+    Spotify.search(term).then(setSearchResults);
+  }, []);
 
   return (
     <div className="App">
       <Header />
       <SearchBar
-        userInput={userInput}
-        setUserInput={setUserInput}
-        setSearchTerm={setSearchTerm}
+        onSearch={search}
       />
       <SearchResults
-        searchTerm={searchTerm}
+        searchResults={searchResults}
+      />
+      <Playlist 
+        playlistName={playlistName}
       />
     </div>
   );
