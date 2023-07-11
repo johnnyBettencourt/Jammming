@@ -1,6 +1,6 @@
 import Track from "../Track/Track";
 
-function TrackList({ tracks }) {
+function TrackList({ tracks, onAdd, onRemove, isRemoval }) {
     return (
         <div className="TrackList">
             {tracks.map((track) => {
@@ -8,6 +8,9 @@ function TrackList({ tracks }) {
                     <Track
                         track={track}
                         key={track.id}
+                        onAdd={onAdd}
+                        onRemove={onRemove}
+                        isRemoval={isRemoval}
                     />
                 )
             })}
