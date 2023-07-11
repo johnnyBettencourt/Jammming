@@ -5,6 +5,7 @@ const SearchBar = ({ onSearch }) => {
 
     const handleTermChange = useCallback((e) => {
         setTerm(e.target.value);
+        e.preventDefault();
     }, []);
 
     const search = useCallback((e) => {
