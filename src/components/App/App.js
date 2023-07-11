@@ -37,22 +37,32 @@ function App() {
   }, [playlistName, playlistTracks]);
 
   return (
-    <div className="App">
+    <div className="App"><div className='app-heading'>
       <Header />
       <SearchBar
         onSearch={search}
       />
-      <SearchResults
-        tracks={searchResults}
-        onAdd={addTrack}
-      />
-      <Playlist 
-        playlistName={playlistName}
-        setPlaylistName={setPlaylistName}
-        tracks={playlistTracks}
-        onRemove={removeTrack}
-        onSave={savePlaylist}
-      />
+    </div>
+      
+      <div className='container'>
+        <div className='col'>
+          <SearchResults
+          tracks={searchResults}
+          onAdd={addTrack}
+        />
+        </div>
+        <div className='col'>
+          <Playlist 
+          className='col'
+          playlistName={playlistName}
+          setPlaylistName={setPlaylistName}
+          tracks={playlistTracks}
+          onRemove={removeTrack}
+          onSave={savePlaylist}
+        />
+        </div>
+        
+      </div>
     </div>
   );
 }

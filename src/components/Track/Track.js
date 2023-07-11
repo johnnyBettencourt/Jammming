@@ -9,19 +9,19 @@ function Track({ track, onAdd, onRemove, isRemoval,  }) {
     const renderAction = () => {
         if(isRemoval) {
             return (
-                <button onClick={removeTrack}> - </button>
+                <button className="little-button delete-button" onClick={removeTrack}> - </button>
             )
         }else {
             return(
-                <button onClick={addTrack}> + </button>
+                <button className="little-button" onClick={addTrack}> + </button>
             )
         }
     }
 
     return (
-        <div>
+        <div className="track-info">
             <div>
-                <h3>{track.name}</h3>
+                <h3 class="track-title">{track.name}</h3>
                 <p>
                     {track.artist} | {track.album}
                 </p>

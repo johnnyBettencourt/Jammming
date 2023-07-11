@@ -15,8 +15,8 @@ const SearchBar = ({ onSearch }) => {
     return (
         <div>
             <form onSubmit={search}>
-                <input placeholder="Song" onChange={handleTermChange} />
-                <button type="submit">
+                <input className='input' placeholder="Song" onChange={handleTermChange} />
+                <button className="button" type="submit">
                     Search
                 </button>
             </form>

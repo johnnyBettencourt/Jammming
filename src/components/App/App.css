@@ -1,38 +1,183 @@
-.App {
-  text-align: center;
+/* Reset some default styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #191414;
+  color: #ffffff;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+/* Apply styles to the root container */
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-height: 100vh;
+}
+
+/* Apply styles to the main content area */
+.app {
+  max-width: 600px;
+  padding: 20px;
+  background-color: #121212;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/* Apply styles to headings */
+h1, h2, h3 {
+  margin-top: 0;
+  color: #ffffff;
+}
+
+/* Apply styles to app heading */
+.app-heading {
+  text-align: center;
+  color: #ffffff;
+  font-size: 24px;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal-sized columns */
+  grid-gap: 10px; /* Spacing between columns */
+  justify-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.col {
+  padding: 10px;
+  width: 500px;
+  height: 1000px;
 }
+
+.results-title{
+  text-align: center;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #1db954;
+  color: #ffffff;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #1ed760;
+}
+
+/* Apply styles to form elements */
+.input {
+  text-align: center;
+  display: flex;
+  width: 300px;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 500px; /* Smaller value for a more rounded appearance */
+  background-color: #282828; /* A darker background color */
+  color: #ffffff;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #1db954;
+  box-shadow: 0 0 0 2px #1db954;
+}
+
+.input::placeholder {
+  color: #ffffff;
+  opacity: 0.6;
+}
+
+.input-like-h2 {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #ffffff;
+  outline: none;
+  text-align: center;
+}
+
+.input-like-h2:focus {
+  border-bottom-color: #1db954;
+}
+
+.little-button {
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: #1db954;
+  color: #ffffff;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  text-decoration: none;
+  justify-self: end;
+  width: 30px;
+  height: 30px;
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease;
+}
+
+.little-button:hover {
+  background-color: #1ed760;
+}
+
+.delete-button {
+  background-color: #ff3b30;
+}
+
+.delete-button:hover {
+  background-color: #f0453a;
+}
+
+.track-info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 500px;
+  align-items: center;
+}
+
+.track-title {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.playlist-title-container{
+  display: flex;
+}
+
+.playlist-title-container button{
+  width: fit-content;
+  height: 50px;
+  margin-left: 10px;
+  background-color: #1db954;
+  color: #ffffff;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 0 20px;
+  transition: background-color 0.3s ease;
+}
+
+.playlist-title-container button:hover {
+  background-color: #1ed760;
+}
+
