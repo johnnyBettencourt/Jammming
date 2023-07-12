@@ -1,5 +1,5 @@
 const clientId = '011879a56f3a4ca78c176b20d4b90ae5';
-const redirectUri = 'https://johnnyBettencourt.github.io/jammming';
+const redirectUri = 'https://johnnybettencourt.github.io/Jammming/';
 let accessToken;
 let type = 'track';
 const baseURL = 'https://api.spotify.com/v1/search?type=' + type + '&q=';
